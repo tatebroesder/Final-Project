@@ -1,0 +1,88 @@
+body{
+    background-color: rgb(239, 215, 215);
+    color: grey;
+    font-family:'Times New Roman', Times, serif
+}
+
+
+h1{
+    color:black;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+h2{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+h3{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.navbar{
+    background-color: grey;
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.sidebar{
+    background-color: lightgray;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+
+    color: white;
+}
+
+.sidebar a{
+    color:white;
+}
+
+.sidebar a:hover{
+    background-color: #575757;
+    border-radius:5px;
+}
+
+.maincontent{
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.box-model{
+    padding:50px;
+    background-color:white;
+    border: 10px solid orangered;
+    margin : 15px
+}
+
+
+
+.sidebar{
+ background-color: lightgray;
+ width: 200px;
+ height: 100%;
+ position: fixed;
+ top: 60px;
+ left:0;
+ padding:15px;
+ box-sizing:border-box;
+
+}
+
+.scroll-to-top {
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    background-color: #007BFF; 
+    color: white; 
+    padding: 10px 15px; 
+    border-radius: 5px;
+    text-decoration: none; 
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+
+}
+

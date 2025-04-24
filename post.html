@@ -1,0 +1,127 @@
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">Scratch</a></li>
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                          <meta charset="UTF-8">
+                          <title>Click the Circle Game</title>
+                          <style>
+                            body {
+                              margin: 0;
+                              font-family: Arial, sans-serif;
+                              background-color: #f4f4f4;
+                              text-align: center;
+                            }
+                        
+                            h1 {
+                              margin-top: 20px;
+                            }
+                        
+                            #score, #time {
+                              font-size: 20px;
+                              margin: 10px;
+                            }
+                        
+                            #gameArea {
+                              margin: 20px auto;
+                              width: 600px;
+                              height: 400px;
+                              border: 2px solid #000;
+                              background-color: #fff;
+                              position: relative;
+                              overflow: hidden;
+                            }
+                        
+                            .circle {
+                              width: 50px;
+                              height: 50px;
+                              border-radius: 50%;
+                              background-color: red;
+                              position: absolute;
+                              cursor: pointer;
+                            }
+                        
+                            #startBtn {
+                              margin-top: 20px;
+                              padding: 10px 20px;
+                              font-size: 16px;
+                              background-color: green;
+                              color: white;
+                              border: none;
+                              cursor: pointer;
+                            }
+                          </style>
+                        </head>
+                        <body>
+                        
+                          <h1>🎯 Click the Circle!</h1>
+                          <div id="score">Score: 0</div>
+                          <div id="time">Time Left: 30s</div>
+                          <div id="gameArea"></div>
+                          <button id="startBtn">Start Game</button>
+                        
+                          <script>
+                            const gameArea = document.getElementById('gameArea');
+                            const scoreDisplay = document.getElementById('score');
+                            const timeDisplay = document.getElementById('time');
+                            const startBtn = document.getElementById('startBtn');
+                        
+                            let score = 0;
+                            let timeLeft = 30;
+                            let intervalId;
+                            let gameRunning = false;
+                        
+                            function getRandomPosition() {
+                              const x = Math.floor(Math.random() * (gameArea.clientWidth - 50));
+                              const y = Math.floor(Math.random() * (gameArea.clientHeight - 50));
+                              return { x, y };
+                            }
+                        
+                            function createCircle() {
+                              const circle = document.createElement('div');
+                              circle.classList.add('circle');
+                              const { x, y } = getRandomPosition();
+                              circle.style.left = x + 'px';
+                              circle.style.top = y + 'px';
+                              gameArea.appendChild(circle);
+                        
+                              circle.addEventListener('click', () => {
+                                score++;
+                                scoreDisplay.textContent = 'Score: ' + score;
+                                circle.remove();
+                                if (gameRunning) {
+                                  createCircle();
+                                }
+                              });
+                            }
+                        
+                            function startGame() {
+                              score = 0;
+                              timeLeft = 30;
+                              gameRunning = true;
+                              scoreDisplay.textContent = 'Score: 0';
+                              timeDisplay.textContent = 'Time Left: 30s';
+                              startBtn.disabled = true;
+                              gameArea.innerHTML = ''; // clear game area
+                        
+                              createCircle();
+                        
+                              intervalId = setInterval(() => {
+                                timeLeft--;
+                                timeDisplay.textContent = 'Time Left: ' + timeLeft + 's';
+                                if (timeLeft <= 0) {
+                                  clearInterval(intervalId);
+                                  gameRunning = false;
+                                  gameArea.innerHTML = '';
+                                  alert('⏰ Time\'s up! Your final score: ' + score);
+                                  startBtn.disabled = false;
+                                }
+                              }, 1000);
+                            }
+                        
+                            startBtn.addEventListener('click', startGame);
+                          </script>
+                        
+                        </body>
+                        </html>
+                        
